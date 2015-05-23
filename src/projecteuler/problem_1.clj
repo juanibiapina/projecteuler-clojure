@@ -1,4 +1,4 @@
 (ns projecteuler.problem-1)
 
-(defn sum-multiples [max]
-  (reduce + (concat (range 0 max 3) (range 0 max 5))))
+(defn sum-multiples [values max]
+  (reduce + (apply concat (map #(range 0 max %) values))))

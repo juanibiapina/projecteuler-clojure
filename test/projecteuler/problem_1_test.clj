@@ -4,4 +4,4 @@
 
 (deftest sum-multiples-of-3-and-5
   (testing "below 10"
-    (is (= 23 (sum-multiples 10)))))
+    (is (= 23 (sum-multiples [3 5] 10)))))
