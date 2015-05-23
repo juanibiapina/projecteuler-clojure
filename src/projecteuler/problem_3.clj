@@ -1,8 +1,18 @@
 (ns projecteuler.problem-3)
 
+(defn prime? [n]
+  (if (< n 2)
+    false
+    (not (some #(zero? (mod n %)) (range 2 (inc (/ n 2)))))))
+
 (defn primes
-  ([] (primes (iterate inc 2)))
-  ([s] (lazy-seq (cons (first s) (primes (filter #(not= 0 (mod % (first s))) (rest s)))))))
+  ([] (primes 2))
+  ([n]
+   (loop [n n]
+     (if (prime? n)
+       (cons n (lazy-seq (primes (inc n))))
+       (recur (inc n))))))
+
 
 (defn max-prime-factor [n]
   (loop [primes (primes)
